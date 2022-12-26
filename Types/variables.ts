@@ -70,5 +70,33 @@ function printIdNumber(num:idNumber):string {
 
 console.log(printIdNumber(1234112));
 console.log(printIdNumber(false));
-console.log(printIdNumber('34201-4254197-3'));
+console.log(printIdNumber('3XXX1-XXXXXX-X'));
 */
+
+// let name:string = "Ali"; is called explicit type interference
+// let name = "Ali"; is called implicit type interference
+
+// any type in typescript
+// we can do anything to type any in typescript. check example code below
+let thing:any = "Suleman";
+  thing = 12;
+  thing = false;
+  thing = [];
+  thing.toNormalize();
+
+  /*
+  let something:string = "I am Something";
+  something.toUpperCase();  // this is valid
+  something.IamnotExisted(); // this is not valid because it is not declaered
+  */
+
+  // Delayed Initialization & Implicit Any 
+
+ const movies = ['Inception','Interstellar','The Shreak','The Lion King'];
+ let foundMovie: string; //here implicit type any can be a problem
+
+ for(let movie of movies) {
+    if(movie ==="Inception"){
+      foundMovie = "Inception";
+    }
+ }
