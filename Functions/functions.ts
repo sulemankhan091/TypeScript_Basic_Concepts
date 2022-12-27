@@ -20,12 +20,17 @@ function greetPerson(person:string){
 // multiple parameters function
 const infoAboutPerson = (name:string,age:number,isFunny:boolean) => {
     let resultOfFunny:String;  
-    if(isFunny == true){
-        resultOfFunny = "funny";
-    }else{
-        resultOfFunny = "not funnny"
-    }
+    resultOfFunny = isFunny ? 'funny' : 'not funny';
+   
     console.log(`Mr/Ms ${name} of age ${age} is ${resultOfFunny}`);
 }
 
-infoAboutPerson("Muhammad Suleman",27,false);
+// infoAboutPerson("Muhammad Suleman",27,false);
+
+// function with default parameters
+
+const greetEidulFitar = (person:string = "Suleman")=>{
+    console.log(`Eid-ul-Fitar Mubarak: ${person}`);
+}
+
+greetEidulFitar();
