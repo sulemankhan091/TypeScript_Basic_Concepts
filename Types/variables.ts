@@ -100,3 +100,34 @@ let thing:any = "Suleman";
       foundMovie = "Inception";
     }
  }
+
+ /* Type unknown in typescript */
+ let value: unknown;
+
+value = 'Hello';
+value = 123;
+value = {};
+
+if (typeof value === 'string') {
+  console.log(value.toUpperCase());  // OK
+}
+
+console.log(value.toUpperCase());  // Error: Object is of type 'unknown'
+
+/*
+In this example, the value variable is declared with the type unknown.
+This means that it can hold any value, but we must perform some type of type 
+checking before we can use it in a type-safe way.
+
+In the first if statement, we use the typeof operator to check if the value is a string. 
+If it is, we can use the toUpperCase method, which is only available on strings.
+
+However, in the second console.log statement, we try to use the toUpperCase method on 
+value without checking its type first. This results in a type error, because the type
+of value is unknown, and we cannot use methods like toUpperCase on it without first 
+performing some type of type assertion or type checking.
+
+It is important to note that the unknown type is a very specific type that should only 
+be used in certain situations. In most cases, it is better to use more general types like 
+any or object.
+*/
