@@ -201,7 +201,7 @@ type CatDog = Cat & Dog & {
 
 let thomas: CatDog = {
     numLives: 7,
-    breed: 'cat',
+    breed: 'British Shorthair',
     age:5
 }
 console.log(typeof(thomas));
