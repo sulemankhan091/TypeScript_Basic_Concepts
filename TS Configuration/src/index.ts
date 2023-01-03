@@ -7,6 +7,7 @@
 // 5---// "files" and "include" options can not used together in tsconfig.json
 // 6---// outDir is the path where compile javascript is stored
 // 7---// target is used to specify version of javascript in which ts is compiled eg:es3, es2015 or es6
+// 8---// "strict": true is recommended and important
 
 
 /* few commands ^End^*/
