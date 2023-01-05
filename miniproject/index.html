@@ -7,7 +7,16 @@
 		<title>miniproject typescript</title>
 	</head>
 	<body>
-		<button id="btn">click me</button>
+		<ul id="todolist"></ul>
+		<form action="" id="todoform" aria-autocomplete="none">
+			<input
+				type="text"
+				id="todoinput"
+				autocomplete="off"
+				required
+				placeholder="Enter a Task!" />
+			<button id="btn">Add Task</button>
+		</form>
 		<script src="./dist/index.js"></script>
 	</body>
 </html>

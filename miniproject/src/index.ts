@@ -1,16 +1,57 @@
-// function printTwice(msg:string):void{
-// 	console.log(msg);
-// 	console.log(msg);	
-// }
+interface Todo {
+    text: string;
+    completed: boolean;
+}
 
- // printTwice("Hello Kia picanto");
- // printTwice("Suleman khan")
-document // typescript knows var document:Document
-const btn = document.getElementById("btn")!; // typescript Non-Null assertion operator
-// when we sure that button with id "btn" exist in html then we can use ! operator 
-// after ! we dont need btn?.addEventListener etc...
-// ! is ts operator not exist in javascript
+const btn = document.getElementById("btn")!; 
+const input = document.getElementById('todoinput')! as HTMLInputElement;
+// (<HTMLInputElement>input).value is another method but not common in React jsx
+const form = document.querySelector('form')!; // no need of => as HTMLFormElement;
+const list = document.getElementById('todolist')!;
 
-btn.addEventListener('click', function () { // if HTMLelement exists then return it, or return null;
-    console.log(`clicked`);
-})
+const todos: Todo[] = readTodos(); 
+todos.forEach(createTodo); 
+
+function createTodo(todo: Todo) {
+    const newLi = document.createElement('li');
+    const checkbox = document.createElement('input');   
+    checkbox.type = 'checkbox';
+    checkbox.checked = todo.completed;
+    checkbox.addEventListener('change', function () {
+        todo.completed = checkbox.checked;
+        saveTodos();
+    })
+    newLi.append(todo.text);
+    newLi.appendChild(checkbox);
+    list.append(newLi);
+    input.value = "";
+}
+
+function readTodos():Todo[] { // from localStorage
+    const todosJSON = localStorage.getItem('todos');
+    if (todosJSON === null) return [];
+    return JSON.parse(todosJSON);
+}
+
+function saveTodos() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+    
+}
+
+function handleSubmit(e: SubmitEvent) {
+    e.preventDefault();
+    const newTodo: Todo = {
+        text: input.value,
+        completed:false,
+    }
+    createTodo(newTodo);
+    todos.push(newTodo);
+    saveTodos();
+    input.value = "";
+}
+
+form.addEventListener('submit', handleSubmit)
+
+
+
+
